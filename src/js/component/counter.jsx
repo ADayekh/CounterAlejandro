@@ -1,5 +1,5 @@
 import React from "react";
-import {stopcounter } from "..";
+import {continuecounter, restartcounter, stopcounter} from "..";
 
 const SecondCounter = (props) => {
 
@@ -42,7 +42,10 @@ const SecondCounter = (props) => {
             <div className = "tenbox mt-4 mb-2  mx-2">{tensecond}</div>
             <div className = "unitbox mt-4 mb-2  mx-2">{unitsecond}</div>
         </div>
-        <button onClick={stopcounter}></button>
+        <button onClick={stopcounter}>STOP</button>
+        <button onClick={continuecounter}>CONTINUE</button>
+        <button onClick={restartcounter}>RESTART</button>
+
     </>
     )
 

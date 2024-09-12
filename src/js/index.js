@@ -15,29 +15,45 @@ let number = null ;
 let counter = prompt ("Escribe un número para la cuenta", number);
 let string = prompt ("Escribe ascendente o descendente (Asegúrate de escribirlo bien)")
 let intervalID = null;
+let memory = null;
 
 switch (true){
  case (counter >= 0 && string == "ascendente"):
         intervalID = setInterval(() =>  {
-            let cuenta1 = counter ++;
-             app.render(<SecondCounter second = {cuenta1} />) }, 1000);
+             counter ++;
+             app.render(<SecondCounter second = {counter} />)}, 1000);
         break;
 
 case (counter > 0 && string == "descendente"):
    intervalID = setInterval(() =>  {
-            let cuenta2 = counter--;
-            if (cuenta2 > -1)
-            app.render(<SecondCounter second = {cuenta2} />) }, 1000);
+            let cuenta = counter--;
+            if (cuenta > -1)
+            app.render(<SecondCounter second = {counter} />) }, 1000);
          break;
 default:
     alert("Error en la declaración de número o función") 
 } 
 
 const stopcounter = () => {
+    memory = counter;
     clearInterval (intervalID);
+    console.log (memory); 
 }
 
-
-export {stopcounter};
+const continuecounter = () => {
+  intervalID=  setInterval(() =>  {
+         app.render(<SecondCounter second = {memory} />)
+        counter = memory++}, 1000);
+        
+}
+const restartcounter = () => {
+    counter = 0;
+    clearInterval (intervalID)
+    intervalID =  setInterval(() =>  {
+        app.render(<SecondCounter second = {counter} />)
+       counter++}, 1000);
+      
+}
+export {stopcounter,continuecounter,restartcounter};
 
 
