@@ -41,11 +41,16 @@ const stopcounter = () => {
 }
 
 const continuecounter = () => {
-    if (memory == counter){
+    if (memory == counter && string == "ascendente"){
   intervalID=  setInterval(() =>  {
          app.render(<SecondCounter second = {memory} />)
         counter = memory++}, 1000);
    }  
+   else if (memory == counter && string == "descendente") {
+    intervalID=  setInterval(() =>  {
+           app.render(<SecondCounter second = {memory} />)
+          counter = memory-- }, 1000);
+    }
 }
 const restartcounter = () => {
     counter = 0;
